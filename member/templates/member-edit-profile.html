@@ -6,14 +6,24 @@
 {% endblock %}
 
 {% block content %}
-<br><br><br><br><br>
+<div id="hero" class="hero overlay subpage-hero contact-hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Edit Profile</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'member-index' %}">Home</a></li>
+              <li class="breadcrumb-item active">Edit Profile</li>
+            </ol>
+        </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
 <main id="main" class="site-main">
     <section class="site-section subpage-site-section section-contact-us">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div style="align-items: center;">
-                        <h2 style="text-align: center;"> Edit Profile <br><span style="font-size: small;">You are a <span style="color: red;">"{{member.role}}"</span>  right now</span> </h2>
+                        <h2 style="text-align: center;"> Edit Profile <br><span style="font-size: small;">You are a <span style="color: red;">"Member"</span>  right now</span> </h2>
                         {% if msg %}
                         <p style="color: red; text-align: center; margin-bottom: 20px ;">{{msg}}</p>
                         {% endif %}

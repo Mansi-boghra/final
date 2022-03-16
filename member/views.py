@@ -11,16 +11,17 @@ from secratory.views import maintenance
 # Create your views here.
 
 def index(request):
-    images = Gallery.objects.all()[20::-1]
+    images = Gallery.objects.all()[::-1][:8]
     memcount = Member.objects.all().count()
     eventcount = Event.objects.all().count()
     complaincount = Complain.objects.all().count()
-
+    noticecount = Notice.objects.all().count()
+    
     try:
         uid = Member.objects.get(email=request.session['emails'])
-        return render(request,'member-index.html',{'uid':uid,'images':images,'memcount':memcount,'eventcount':eventcount,'complaincount':complaincount})
+        return render(request,'member-index.html',{'uid':uid,'images':images,'memcount':memcount,'eventcount':eventcount,'complaincount':complaincount,'noticecount':noticecount})
     except:
-        return render(request,'member-index.html',{'images':images,'memcount':memcount,'eventcount':eventcount,'complaincount':complaincount})
+        return render(request,'member-index.html',{'images':images,'memcount':memcount,'eventcount':eventcount,'complaincount':complaincount,'noticecount':noticecount})
 
 
 

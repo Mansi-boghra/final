@@ -15,10 +15,16 @@ from member import models as mm
 def index(request):
     try:
         uid = AdminSec.objects.get(email=request.session['email'])
-        return render(request,'index.html',{'uid':uid})
+        notice_num = mm.Notice.objects.all().count()
+        event_num = Event.objects.all().count()
+        complain_num = mm.Complain.objects.all().count()
+        member_num = Member.objects.all().count()
+        new_member = Member.objects.all()[::-1][:6]
+        complains = mm.Complain.objects.filter(status=False)
+        return render(request,'index.html',{'uid':uid,'notice_num':notice_num, 'event_num':event_num,'complain_num':complain_num,'member_num':member_num,'new_member':new_member,'complains':complains})
     except:
-        pass
-    return render(request,'index.html')
+        
+        return render(request,'sign-in.html')
 
 def signin(request):
     try:

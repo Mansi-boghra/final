@@ -40,20 +40,20 @@
               <div class="row">
                 <div class="col-4">
                   <label for="" class="form-control">complain by</label>
-                  <input type="text" name="c_by" class="form-control" value="{{complains.complain_by.fname}} {{complains.complain_by.lname}}" required placeholder="Enter name ..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                  <input type="text" name="c_by" disabled class="form-control" value="{{complains.complain_by.fname}} {{complains.complain_by.lname}}" required placeholder="Enter name ..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
                 </div>
                 <div class="col-4">
                   <label for="" class="form-control">solve by</label>
-                  <input type="text" name="s_by" class="form-control" value="{{complains.solve_by.name}}" required placeholder="Enter your name... " style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                  <input type="text" name="s_by" disabled class="form-control" value="{{complains.solve_by.name}}" required placeholder="Enter your name... " style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
                 </div>
                 <div class="col-4">
                     <label for="" class="form-control">Subject</label>
-                    <input type="text" name="subject" class="form-control" value="{{complains.subject}}" required placeholder="Enter your subject... " style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                    <input type="text" name="subject" disabled class="form-control" value="{{complains.subject}}" required placeholder="Enter your subject... " style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
                   </div>
                 <div class="row">
                   <div class="col-8">
                     <label for="text" class="form-control">Description</label>
-                    <textarea name="des" class="form-control" value="{{complains.des}}" required placeholder="type here..." id="" cols="30" rows="10"  style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;"></textarea>
+                    <textarea name="des" disabled class="form-control" required placeholder="type here..." id="" cols="30" rows="10"  style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;">{{complains.des}}</textarea>
                   </div>
                 </div>
                 <br><br>

@@ -8,6 +8,12 @@
 {% block content %}
 
 <style>
+  div#hero {
+    top: -120px;
+}
+.filters {
+    margin-top: 0 !important;
+}
   .gallerybg{
     background: url(../static/member-static/assets/img/hero.jpg) no-repeat center / cover;
     height: 100%;
@@ -113,13 +119,24 @@
 }
 </style>
 <section class="portfolio section">
-  <div class="top-side gallerybg">
+  <!-- <div class="top-side gallerybg">
      
     <h2>Gallery</h2>
-  </div>
+  </div> -->
+  <div id="hero" class="hero overlay subpage-hero contact-hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Gallery</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'member-index' %}">Home</a></li>
+              <li class="breadcrumb-item active">Gallery</li>
+            </ol>
+        </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
   <div class="container">
    
-    
     <div class="filters">
       <ul>
         <li class="active" data-filter="*">All</li>

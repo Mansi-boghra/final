@@ -688,7 +688,7 @@ html, body {
 .site-title {
     font-size: 18px;
     line-height: 26px;
-    color: #26272d;
+    color: #ffffff;
 }
 
 .site-title:hover {
@@ -718,7 +718,7 @@ html, body {
     padding: 0;
     font-size: 16px;
     position: relative;
-    color: #26272d;
+    color: #ffffff;
     line-height: 26px;
 }
 
@@ -730,7 +730,9 @@ html, body {
 .navbar-nav > li > a i {
     margin-left: 5px;
 }
-
+div#hero h1 {
+    color: white;
+}
 .navbar-nav > li + li {
     margin-left: 30px;
 }
@@ -814,8 +816,8 @@ html, body {
 
 /* HERO
 ================================================== */
-.hero { 
-    background: url(../img/hero.jpg) no-repeat center / cover; 
+.hero {
+    background: url(../img/herobanner.jpg) no-repeat center / cover !important;
     height: 100%;
     width: 100%;
     display: table;
@@ -824,13 +826,13 @@ html, body {
 
 .overlay:before {
   content: '';
-  background-color: rgba(255,255,255,0.5);
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
+  background-color: rgba(38,39,45,0.5);
 }
 
 .hero-content {
@@ -845,6 +847,8 @@ html, body {
     margin: 0 auto;
     padding: 0 15px;
     text-align: center;
+    top: 50px;
+    position: relative;
 }
 
 .hero-text h1 {
@@ -854,9 +858,9 @@ html, body {
 
 .hero-text p {
     position: relative;
-    margin: 45px 0 30px;
+    margin: 48px 0 30px;
     font-size: 20px;
-    color: #26272d;
+    color: #ffffff;
 }
 
 .hero-text .btn {
@@ -1656,3 +1660,4 @@ a.linkedin-bg:hover {
     font-size: 60px !important;
     font-weight: 400 !important;
 }
+

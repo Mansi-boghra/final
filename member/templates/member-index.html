@@ -2,6 +2,40 @@
 {% load static %}
 {% block content %}
 <style>
+    form.form-group.newsletter-group button {
+        margin-top: 0;
+    position: relative;
+    margin-top: 10px;
+}
+.star-rating {
+    margin-bottom: 10px;
+}
+    .star-rating {
+  direction: rtl;
+  display: inline-block;
+  padding: 20px;
+  cursor: default;
+  padding-top: 0;
+}
+.star-rating input[type=radio] {
+  display: none;
+}
+.star-rating label {
+  color: #bbb;
+  font-size: 18px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type=radio]:checked ~ label {
+  color: #f2b600;
+}
+.star-rating i {
+    font-size: 43px;
+    margin: 0 10px;
+}
     section.site-section.section-portfolio {
     overflow: hidden;
 }
@@ -16,11 +50,26 @@
     <div id="hero" class="hero overlay">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Your story begins from here.</h1>
-                <p>Your clients on the internet. Learn how to receive them.</p>
+                <P>Welcome to</P><BR>
+                <h1>DIGITAL SOCIETY</h1>
+                <p>More then just a digital marketing agency.</p>
             </div><!-- /.hero-text -->
         </div><!-- /.hero-content -->
     </div><!-- /.hero -->
+
+    <section class="site-section section-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2>What is “The Digital Society”?</h2>
+                    <p>The Digital Society serves as a network between Students and Digital Entrepreneurs. We fill the gap between students and the latest industry ready requirements to keep up them in the race. The Digital Society was created by a group of Digital Entrepreneurs having an experience of more than 8 years with the sole aim of promoting digital awareness among our millennial.</p>
+                </div>
+                <div class="col-sm-7 hidden-xs">
+                    <img src="{% static 'member-static/assets/img/house.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section><!-- /.section-features -->
 
     <main id="main" class="site-main">
 
@@ -50,8 +99,8 @@
                     </div>
                     <div class="col-sm-3 col-xs-6">
                         <div class="counter-item">
-                            <p class="counter" data-to="675" data-speed="1000">0</p>
-                            <h3></h3>
+                            <p class="counter" data-to="675" data-speed="1000">{{noticecount}}</p>
+                            <h3>Member's Notice</h3>
                         </div><!-- /.counter-item -->
                     </div>
                 </div>
@@ -59,22 +108,8 @@
             
         </section><!-- /.section-map-feature -->
         
-        <section class="site-section section-features">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h2>Responsive web design</h2>
-                        <p>Responsive Web design is the approach that suggests that design and development should respond to the user's behavior and environment based on screen size, platform and orientation. The practice consists of a mix of flexible grids and layouts, images and an intelligent use of CSS media queries</p>
-                    </div>
-                    <div class="col-sm-7 hidden-xs">
-                        <img src="{% static 'member-static/assets/img/ipad-pro.png' %}" alt="">
-                    </div>
-                </div>
-            </div>
-        </section><!-- /.section-features -->
-        
-        
-
+       
+    
         <section class="site-section section-services gray-bg text-center">
             <div class="container">
                 <h2 class="heading-separator">Our Services</h2>
@@ -90,8 +125,8 @@
                     <div class="col-md-3 col-xs-6">
                         <div class="service">
                             <img src="{% static 'member-static/assets/img/bycicle.svg' %}" alt="">
-                            <h3 class="service-title">Design</h3>
-                            <p class="service-info">The strength of a design lies as much in the steps taken to create it as in the final result. </p>
+                            <h3 class="service-title">Club</h3>
+                            <p class="service-info">The students are encouraged to plan, organise and participate in various curricular and extra-curricular activities on their own with basic support from the Institute. </p>
                         </div><!-- /.service -->
                     </div>
                     <div class="col-md-3 col-xs-6">
@@ -165,10 +200,34 @@
         <section class="site-section section-newsletter text-center">
             <div class="container">
                 <h2>Subscribe our newsletters</h2>
-                <form class="form-group newsletter-group">
+               
+                <!-- /.newsletter-group -->
+                <div class="star-rating">
+                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                    <label for="star-5" title="5 stars">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                    <label for="star-4" title="4 stars">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                    <label for="star-3" title="3 stars">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                    <label for="star-2" title="2 stars">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                    <input id="star-1" type="radio" name="rating" value="star-1" />
+                    <label for="star-1" title="1 star">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                  </div>
+                  <form class="form-group newsletter-group">
                     <input type="email" class="form-control" placeholder="Your e-mail" required>
                     <button class="btn btn-green" type="button">Subscribe</button>
-                </form><!-- /.newsletter-group -->
+                </form>
             </div>
         </section><!-- /.section-newsletter -->
 

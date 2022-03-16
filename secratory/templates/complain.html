@@ -74,11 +74,11 @@
                   </td>
                   <td style="text-align: right;">
                   <a href="{% url 'solve-complain' complain.id %}">
-                  <button type="submit" class="btn btn-primary"> Solve complain</button>
+                  <button type="submit" class="btn btn-primary"> Solve complain </button>
                   </a></td>
                   <td>
                   <a href="{% url 'view-complain' complain.id %}">
-                  <button type="submit" class="btn btn-primary"> View complain</button>
+                  <button type="submit" class="btn btn-primary"> View complain </button>
                   </a>
                 </td>
                 </tr>
@@ -130,7 +130,7 @@
                     <div class="d-flex px-2 py-1">
                       
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm" >{{complain.solve_by}}</h6>
+                        <h6 class="mb-0 text-sm" >{{complain.solve_by.name}}</h6>
                       </div>
                     </div>
                   </td>
