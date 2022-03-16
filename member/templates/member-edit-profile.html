@@ -47,7 +47,6 @@
                                 <div class="form-group">
                                   <label for="name">Email:</label>
                                   <input type="email" disabled value="{{uid.email}}" placeholder="Enter Your Email..." style="background-color: rgb(152, 235, 152);" class="form-control" id="fname">
-<!--                                   <p style="color: red; font-size: smaller; margin-left: 30px;">*You can't change this field</p> -->
                                 </div>
                             </div>
                       
@@ -61,15 +60,12 @@
                                 <div class="form-group lastname">
                                   <label for="name">Flat No:</label>
                                   <input type="text" value="{{uid.flat_no}}" disabled style="background-color: rgb(152, 235, 152);" placeholder="Enter Your Flat Number..." class="form-control" id="fname">
-<!--                                   <p style="color: red; font-size: smaller; margin-left: 30px;">*You can't change this field</p> -->
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                   <div class="form-group">
                                      <label for="name">Wing:</label>
                                      <input type="text" value="{{uid.wing}}" disabled style="background-color: rgb(152, 235, 152);" placeholder="Enter Your wing Number..." class="form-control" id="fname">
-    <!--                                  <p style="color: red; font-size: smaller; margin-left: 30px;">*You can't change this field</p> -->
-                                                             
                                    </div>
                                 </div>
                             <div class="col-lg-6">
@@ -84,14 +80,12 @@
                                 <div class="form-group">
                                   <label for="email">Document type:</label>
                                   <input type="text" disabled placeholder="Enter Your Mobile..." value="{{uid.doc_type}}" style="background-color: rgb(152, 235, 152);" class="form-control" id="">
-<!--                                   <p style="color: red; font-size: smaller; margin-left: 30px;">*You can't change Document type</p> -->
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                  <label for="name">Document no: </label><span>{% if member.verify %} <i class="fa fa-check" style="color: green"></i> {% else %} <i class="fa fa-close" style="color: red;"></i> {% endif %} </span>
+                                  <label for="name">Document no: </label><span> <i class="fa fa-check" style="color: green"></i> </span>
                                   <input type="text" disabled value="{{uid.doc_num}}" style="background-color: rgb(152, 235, 152);" placeholder="Enter Your Flat Number..." class="form-control" id="fname">
-<!--                                   <p style="color: red; font-size: smaller; margin-left: 30px;">*You can't change this field</p> -->
                                    
                                 </div>
                             </div>

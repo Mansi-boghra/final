@@ -104,13 +104,9 @@ def member_complain(request):
                 # status = request.POST['status'],
             ) 
             msg = 'your complain send successfully'  
-            complains = Complain.objects.all()[::-1]
-            return render (request,'member-complain.html',{'msg':msg,'uid':uid,'complains':complains})
-    else:
-       msg='error'
+            return render (request,'member-complain.html',{'msg':msg,'uid':uid})
        
-    complains = Complain.objects.all()[::-1]
-    return render (request,'member-complain.html',{'uid':uid,'complains':complains})
+    return render (request,'member-complain.html',{'uid':uid})
 
 def member_my_complain(request):
     uid = Member.objects.get(email=request.session['emails'])
@@ -124,6 +120,16 @@ def view_member_complain(request,pk):
 
 def request_event(request):
     uid = Member.objects.get(email=request.session['emails'])
+    if request.method == 'POST':
+        ReqEvent.objects.create(
+            req_by = uid,
+            title = request.POST['title'],
+            event_at = request.POST['date'],
+            des = request.POST['des'],
+            pic = request.FILES['pic'] if 'pic' in request.FILES else None,
+        )
+        msg =  'Event Requested to the Secratory. Wait till confirmation.'
+        return render(request,'request-event.html',{'uid':uid,'msg':msg})
     return render(request,'request-event.html',{'uid':uid})
 
 def view_event(request):
@@ -133,7 +139,7 @@ def view_event(request):
 
 def pending_request(request):
     uid = Member.objects.get(email=request.session['emails'])
-    events = Event.objects.all()
+    events = ReqEvent.objects.filter(req_by=uid)
     return render(request,'pending-request.html',{'uid':uid,'events':events})
 
 def member_maintenance(request):
@@ -170,42 +176,18 @@ def member_maintenance(request):
 
 def pay_maintenance(request):
     uid = Member.objects.get(email=request.session['emails'])
-    main = Maintenance.objects.filter(verify=True)[::-1]
+    main = Maintenance.objects.filter(verify=True,pay_by=uid)[::-1]
     return render(request,'pay-maintenance.html',{'uid':uid,'main':main})
 
 def member_notice(request):
     uid = Member.objects.get(email=request.session['emails'])
-    notices = Notice.objects.all()
+    notices = Notice.objects.filter(rec_by=uid)
     return render(request,'member-notice.html',{'uid':uid,'notices':notices})
 
 
 # authorize razorpay client with API Keys.
 razorpay_client = razorpay.Client(
     auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
- 
- 
-# def homepage(request):
-#     currency = 'INR'
-#     amount = 20000  # Rs. 200
- 
-#     # Create a Razorpay Order
-#     razorpay_order = razorpay_client.order.create(dict(amount=amount,
-#                                                        currency=currency,
-#                                                        payment_capture='0'))
- 
-#     # order id of newly created order.
-#     razorpay_order_id = razorpay_order['id']
-#     callback_url = 'paymenthandler/'
- 
-#     # we need to pass these details to frontend.
-#     context = {}
-#     context['razorpay_order_id'] = razorpay_order_id
-#     context['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
-#     context['razorpay_amount'] = amount
-#     context['currency'] = currency
-#     context['callback_url'] = callback_url
- 
-#     return render(request, 'index.html', context=context)
  
  
 # we need to csrf_exempt this url as

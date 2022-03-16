@@ -21,7 +21,8 @@ def index(request):
         member_num = Member.objects.all().count()
         new_member = Member.objects.all()[::-1][:6]
         complains = mm.Complain.objects.filter(status=False)
-        return render(request,'index.html',{'uid':uid,'notice_num':notice_num, 'event_num':event_num,'complain_num':complain_num,'member_num':member_num,'new_member':new_member,'complains':complains})
+        req_events = mm.ReqEvent.objects.filter(status=False)
+        return render(request,'index.html',{'uid':uid,'notice_num':notice_num,'req_events':req_events, 'event_num':event_num,'complain_num':complain_num,'member_num':member_num,'new_member':new_member,'complains':complains})
     except:
         
         return render(request,'sign-in.html')

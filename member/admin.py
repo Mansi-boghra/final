@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(Notice)
 admin.site.register(Complain)
 admin.site.register(Maintenance)
+admin.site.register(ReqEvent)

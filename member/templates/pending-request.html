@@ -70,14 +70,16 @@ table#customers{
     <th>Event title</th>
     <th>Event date</th>
     <th>Description</th>
+    <th>Requested Date</th>
     <th>status</th>
   </tr>
   {% for event in events %}
   <tr>
     <td style="text-align: center;">{{event.title}}</td>
-    <td style="text-align: center;">{{event.date}}</td>
+    <td style="text-align: center;">{{event.event_at}}</td>
     <td style="text-align: center;">{{event.des}}</td>
-    <td></td>
+    <td style="text-align: center;">{{event.req_at}}</td>
+    <td style="text-align: center;">{% if event.status == False %} <span style="color: red;">Pending</span> {% else %} <span style="color: rgb(45, 216, 45);">Approved</span> {% endif %} </td>
 </tr>
 {% endfor %}
   

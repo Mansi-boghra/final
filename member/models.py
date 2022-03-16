@@ -39,3 +39,20 @@ class Maintenance(models.Model):
 
     def __str__(self):
         return self.pay_by.fname + ' >> ' + str(self.month)
+
+
+class ReqEvent(models.Model):
+
+    req_by = models.ForeignKey(Member,on_delete=models.SET_NULL,null=True,blank=True)
+    title = models.CharField(max_length=50)
+    des = models.TextField()
+    event_at = models.DateField()
+    pic = models.FileField(upload_to='Request Event',null=True,blank=True)
+    req_at = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=False)
+    action = models.BooleanField(default=False)
+    ap_by = models.ForeignKey(AdminSec,on_delete=models.SET_NULL, null=True,blank=True)
+    ap_at = models.DateTimeField(null=True,blank=True)
+
+    def __str__(self):
+        return self.title + "  >  " + self.req_by.fname + "  " + self.req_by.lname
