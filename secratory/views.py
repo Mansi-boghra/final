@@ -137,7 +137,6 @@ def add_event(request):
                 title = request.POST['title'],
                 des = request.POST['des'],
                 event_at = request.POST['event_at'],
-                # pic = request.FILES['pic'],
                 pic = request.FILES['pic'] if 'pic' in request.FILES else None
             )
             msg = 'Event added successfully'
@@ -340,3 +339,34 @@ def maintenance(request):
     uid = AdminSec.objects.get(email=request.session['email'])
     main = mm.Maintenance.objects.filter(verify=True)[::-1]
     return render(request,'maintenance.html',{'uid':uid,'main':main})
+
+def req_event_reject(request,pk):
+    event = mm.ReqEvent.objects.get(id=pk)
+    event.status = True
+    event.save()
+    return redirect('index')
+
+def req_event_app(request,pk):
+    uid = AdminSec.objects.get(email=request.session['email'])
+    event = mm.ReqEvent.objects.get(id=pk)
+    event.status = True
+    event.action = True
+    event.ap_by = uid
+    event.ap_at = datetime.now()
+    event.save()
+
+    Event.objects.create(
+        uid = uid,
+        title = event.title,
+        des = event.des,
+        event_at = event.event_at,
+        pic = event.pic
+    )
+    subject = 'Event Approval'
+    message = f""" Congratulations {event.req_by.fname}!! 
+    Your Event "{event.title}" on '{event.event_at}' is approved By Secratory"""
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [event.req_by.email, ]
+    send_mail( subject, message, email_from, recipient_list )
+
+    return redirect('index')

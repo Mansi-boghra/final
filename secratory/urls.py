@@ -26,6 +26,8 @@ urlpatterns = [
     path('solve-complain/<int:pk>',views.solve_complain,name='solve-complain'),
     path('view-complain/<int:pk>',views.view_complain,name='view-complain'),
     path('maintenance/',views.maintenance,name='maintenance'),
+    path('req-event-reject/<int:pk>',views.req_event_reject,name='req-event-reject'),
+    path('req-event-app/<int:pk>',views.req_event_app,name='req-event-app'),
     
 ]
 
