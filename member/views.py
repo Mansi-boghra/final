@@ -101,7 +101,8 @@ def contact_list(request):
         if request.POST['search'].lower() == 'all' or request.POST['search'].lower() == '':
             pass
         else:
-            contacts = Emergency.objects.filter(occup__contains = request.POST['search'])
+            contacts = list(Emergency.objects.filter(name__contains = request.POST['search']))
+            contacts += list(Emergency.objects.filter(occup__contains = request.POST['search']))
         return render(request,'contact-list.html',{'uid':uid,'contacts':contacts,'search':request.POST['search']})
     return render(request,'contact-list.html',{'uid':uid,'contacts':contacts})
 
