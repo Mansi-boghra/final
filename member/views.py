@@ -49,9 +49,9 @@ def member_login(request):
                 request.session['emails']=request.POST['email']
                 return redirect('member-index')
             else:
-                return render(request,'member-login.html',{'msg':'INVALID DATA'})
+                return render(request,'member-login.html',{'msg':'Password is Wrong'})
         except:
-            msg='GO AND SIGNUP FIRST'
+            msg='Please Contact admin and request for an account'
             return render(request,'member-login.html',{'msg':msg})
     return render(request,'member-login.html')
 
@@ -97,6 +97,12 @@ def member_edit_profile(request):
 def contact_list(request):
     uid = Member.objects.get(email=request.session['emails'])
     contacts = Emergency.objects.all()
+    if request.method == 'POST':
+        if request.POST['search'].lower() == 'all' or request.POST['search'].lower() == '':
+            pass
+        else:
+            contacts = Emergency.objects.filter(occup__contains = request.POST['search'])
+        return render(request,'contact-list.html',{'uid':uid,'contacts':contacts,'search':request.POST['search']})
     return render(request,'contact-list.html',{'uid':uid,'contacts':contacts})
 
 def member_complain(request):
