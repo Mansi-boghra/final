@@ -60,9 +60,11 @@
                 <div class="collapse navbar-collapse" id="agency-navbar-collapse">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="{% url 'member-index' %}" data-toggle="dropdown">Home</a></li>
+                        <!-- <li class="active"><a href="{% url 'member-index' %}" data-toggle="dropdown">Home</a></li> -->
+                        <li><a href="{% url 'member-index' %}"><i class=""></i> Home </a></li>
+                        
                         {% if request.session.emails %}
-
+                        
                         <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Events<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                 <li><a href="{% url 'view-event' %}"><i class="fa fa-eye"></i> &nbsp; view event</a></li>
@@ -97,24 +99,20 @@
                             </ul>
                         </li>
                         {% else %}
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                              <li><a href="{% url 'member-blog' %}">Blog</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{% url 'member-blog' %}">Blog</a></li>
+
+                        <li><a href="{% url 'about-us' %}">About us</a></li>
+                        <li><a href="{% url 'features' %}">Features</a></li>
                         <li><a href="{% url 'member-contact' %}">Contact</a></li>
                         
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-
                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                              <li><a href="{% url 'sign-in' %}">As Secratory</a></li>
-                              <li><a href="{% url 'member-login' %}">As Member</a></li>
+                              <li><a href="{% url 'sign-in' %}"> <i class="fa fa-sign-in"></i> &nbsp; As Secratory</a></li>
+                              <li><a href="{% url 'member-login' %}"> <i class="fa fa-sign-in"></i> &nbsp; As Member</a></li>
                               <!-- <li><a href="{% url 'member-change-password' %}">Change Password</a></li> -->
-                        
-                        {% endif %}
+                           
                             </ul>
-
+                            
+                            {% endif %}
                         </li>
                     </ul>
 
@@ -151,7 +149,7 @@
                     <h3>Featured links</h3>
                     <ul class="list-unstyled">
                         <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="{% url 'member-blog' %}">Blog</a></li>
+                        <li><a href="{% url 'features' %}">Features</a></li>
                         <li><a href="{% url 'member-contact' %}">Contact</a></li>
                         <li><a href="{% url 'member-complain' %}">member complain</a></li>
                     </ul>

@@ -24,12 +24,14 @@ def index(request):
         return render(request,'member-index.html',{'images':images,'memcount':memcount,'eventcount':eventcount,'complaincount':complaincount,'noticecount':noticecount})
 
 
-
 def member_blog_post (request):
     return render(request,'member-blog-post.html')
 
-def member_blog (request):
-    return render(request,'member-blog.html')
+def about_us(request):
+    return render(request,'about-us.html')
+
+def features (request):
+    return render(request,'features.html')
 
 def logout (request):
     del request.session['emails']
@@ -66,9 +68,12 @@ def member_change_password(request):
     return render(request,'member-change-password.html',{'uid':uid})
 
 def member_gallery(request):
-    uid = Member.objects.get(email=request.session['emails'])
-    photos = Gallery.objects.all()[::-1]
-    return render(request,'member-gallery.html',{'uid':uid,'photos':photos})
+    try:
+        uid = Member.objects.get(email=request.session['emails'])
+        photos = Gallery.objects.all()[::-1]
+        return render(request,'member-gallery.html',{'uid':uid,'photos':photos})
+    except:
+        return redirect('member-login')
 
 def member_edit_profile(request):
     uid = Member.objects.get(email=request.session['emails'])
