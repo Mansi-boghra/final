@@ -6,6 +6,48 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    .ui-tabs-accordion.mt-50 .row .col-md-12 {
+    margin: auto;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+}
+
+.ui-tabs-accordion.mt-50 .row {
+    text-align: center;
+}
+
+div#accordion {
+    width: 500px;
+}
+
+.panel {
+    margin-bottom: 20px !important;
+    border: 1px solid lightgray !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+}
+
+.accordion .panel-heading a {
+    height: 40px;
+}
+
+.ui-tabs-accordion.mt-50 {
+    overflow: hidden;
+}
+
+.panel-body {
+    background: #6fc7541c;
+}
+
+.panel-body p {
+    color: black !important;
+}
+
+</style>
 
 <div id="hero" class="hero overlay subpage-hero contact-hero">
     <div class="hero-content">
@@ -24,7 +66,7 @@
     <h2 class="text-center heading-separator">Complain Details</h2>
     <div class="row">   
 
-        <div class="col-md-12" style="text-align: center; align-items: center; width: 50%; margin-left: 400px;">
+        <div class="col-md-12" style="text-align: center; align-items: center; width: 50%; ">
 
             <div class="panel-group accordion mb-50" id="accordion">
                 <div class="panel">

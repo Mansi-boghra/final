@@ -1661,3 +1661,6 @@ a.linkedin-bg:hover {
     font-weight: 400 !important;
 }
 
+a.site-title {
+    color: black;
+}
