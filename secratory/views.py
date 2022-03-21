@@ -259,10 +259,17 @@ def edit_member(request,pk):
     if request.method == 'POST':
         members.fname = request.POST['fname']
         members.lname = request.POST['lname']
-        # members.email = request.POST['email']
+        members.email = request.POST['email']
         members.mobile = request.POST['mobile']
         members.wing = request.POST['wing']
+        members.flat_no = request.POST['flat_no']
+        members.address = request.POST['address']
         members.doc_type = request.POST['doc']
+        members.doc_num = request.POST['doc_num']
+        if 'verify' in request.POST:
+            members.role = True
+        else:
+            members.role = False
         members.save()
         return redirect('manage-member')
     return render(request,'edit_member.html',{'uid':uid,'members':members})

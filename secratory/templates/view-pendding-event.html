@@ -1,89 +1,85 @@
 {% extends 'header.html' %}
 {% load static %}
 
-{% block title %}
-<title>view pendding event</title>
-{% endblock %}
-
-
 {% block content %}
-  <!-- End Navbar -->
-  <div class="container-fluid px-2 px-md-4"><br><br><br>
+
+<div class="container-fluid px-2 px-md-4"><br><br><br>
     <!-- <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
       <span class="mask  bg-gradient-primary  opacity-6"></span>
     </div> -->
-    <h3>View Pendding event</h3>
-  </div>
-</div>
-  <div class="row">
-    <div class="col-12">
-      <div class="card my-4">
-        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-          <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">View Pendding events details</h6>
-          </div>
-        </div>
-        <div class="card-body px-0 pb-2">
-          <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
-              <thead>
-                <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Request_by</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Des</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Event @</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Request @</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Approve</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Approve @</th>
-                  <!-- <th class="text-secondary opacity-7" style="text-align: center;" colspan="2">Action</th> -->
-                </tr>
-              </thead>
-              <tbody>
-              
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">{{event.req_by.fname}}</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="text-xs font-weight-bold mb-0">{{event.title}}</p>
-                    <!-- <p class="text-xs text-secondary mb-0">Organization</p> -->
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="badge badge-sm bg-gradient-success">{{event.des}}</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{{event.event_at}}</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{{event.req_at}}</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{% if event.status == True %} Approve {% else %} Reject {% endif %}</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{{event.ap_by}}</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{{event.ap_at}}</span>
-                  </td>
-                  
-                  
-                </tr>
-              
-              </tbody>
-            </table>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+      <div class="row gx-4 mb-2">
+        <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+          <div class="nav-wrapper position-relative end-0">
+            
           </div>
         </div>
       </div>
+      <h1>View Pendding Event <span style="color: palevioletred;"> {{event.title}}</span></h1>
+      <div class="row">
+        <h5>{{msg}}</h5>
+        <div class="row">
+          <div class="card-body">
+            <form role="form" action="{% url 'view-pendding-event' event.id %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="row">
+                  <div class="col-4">
+                    <label for="" class="form-control">Request by</label>
+                    <input type="text" name="req_by" disabled class="form-control" value="{{event.req_by.fname}}" required placeholder="Enter event title..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                  </div>
+                  <div class="col-4">
+                    <label for="" class="form-control">Event title</label>
+                    <input type="text" name="title" disabled class="form-control" value="{{event.title}}" required placeholder="Enter event title..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                  </div>
+                </div>
+                <div class="row">
+                        <div class="col-4">
+                          <label for="" class="form-control">Request at</label>
+                          <input type="text" name="req_at" disabled class="form-control" value="{{event.req_at}}" required placeholder="Enter event title..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                        </div>
+                        <div class="col-4">
+                          <label for="" class="form-control">Status</label>
+                          <input type="text" name="status" disabled class="form-control" value="{% if event.status == True %} Approve {% else %} Reject {% endif %}" required placeholder="Enter event title..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                        </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <label for="" class="form-control">Description</label>
+                      <textarea name="des" class="form-control" disabled required placeholder="type here..." id="" cols="30" rows="10"  style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;">{{event.des}}</textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <label for="" class="form-control">Event Pic</label>
+                      <input type="file" name="pic" class="form-control" disabled style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-4">
+                    <label for="" class="form-control">Event Date</label>
+                    <input type="text" name="event_at" class="form-control" disabled value="{{event.event_at}}" required placeholder="Enter event date... " style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                  </div>
+                        <div class="col-4">
+                          <label for="" class="form-control">Status</label>
+                          <input type="text" name="status" class="form-control" disabled value="{% if event.status == True %} Approve {% else %} Reject {% endif %}" required placeholder="Enter event title..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                              <label for="" class="form-control">Approve by</label>
+                              <input type="text" name="ap_by" class="form-control" disabled value="{{event.ap_by}}" required placeholder="Enter event title..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                            </div>
+                            <div class="col-4">
+                              <label for="" class="form-control">Approve at</label>
+                              <input type="text" name="ap_at" class="form-control" disabled value="{{event.ap_at}}" required placeholder="Enter event title..." style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
+                            </div>
+                        </div>
+                  </div><br><br>
+                </div>
+             </form>
+        
+        </div>
+      </div>
     </div>
+    
   </div>
+
 {% endblock %}
-  
-
-
-
