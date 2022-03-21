@@ -21,6 +21,7 @@ urlpatterns = [
     path('edit-member/<int:pk>',views.edit_member,name='edit_member'),
     path('send-notice/',views.send_notice,name='send-notice'),
     path('delete-notice/<int:pk>',views.delete_notice,name='delete-notice'),
+    path('view-notice/<int:pk>',views.view_notice,name='view-notice'),
     path('gallery/',views.gallery,name='gallery'),
     path('complain/',views.complain,name='complain'),
     path('solve-complain/<int:pk>',views.solve_complain,name='solve-complain'),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('maintenance/',views.maintenance,name='maintenance'),
     path('req-event-reject/<int:pk>',views.req_event_reject,name='req-event-reject'),
     path('req-event-app/<int:pk>',views.req_event_app,name='req-event-app'),
+    path('view-pendding-event/<int:pk>',views.view_pendding_event,name='view-pendding-event')
     
 ]
 

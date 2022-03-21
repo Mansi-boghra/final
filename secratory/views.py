@@ -1,3 +1,4 @@
+from ast import Return
 from datetime import datetime
 from django.shortcuts import redirect, render
 from .models import *
@@ -293,6 +294,20 @@ def delete_notice(request,pk):
     notice.delete()
     return redirect('send-notice')
 
+def view_notice(request,pk):
+    uid = AdminSec.objects.get(email=request.session['email'])
+    notices = mm.Notice.objects.get(id=pk)
+    if request.method == 'POST':
+        notices.send_to = request.POST['send-to']
+        notices.rec_by = request.POST['rec_by']
+        notices.subject = request.POST['subject']
+        notices.des = request.POST['des']
+        notices.created_at = request.POST['created_at']
+        notices.save()
+        return redirect('send-notice')
+    return render(request,'view-notice.html',{'uid':uid,'notices':notices})
+
+
 def gallery(request):
     # msg = 'Photo added successfully'
     uid = AdminSec.objects.get(email=request.session['email'])
@@ -367,3 +382,8 @@ def req_event_app(request,pk):
     send_mail( subject, message, email_from, recipient_list )
 
     return redirect('index')
+
+def view_pendding_event(request,pk):
+    uid = AdminSec.objects.get(email=request.session['email'])
+    event = mm.ReqEvent.objects.get(id=pk)
+    return render(request,'view-pendding-event.html',{'uid':uid,'event':event})

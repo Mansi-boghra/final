@@ -268,7 +268,7 @@
                             <i class="fa fa-ellipsis-v text-secondary"></i>
                           </a>
                           <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;"><i class="fa fa-sign-in text-info"></i> View</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="{% url 'view-pendding-event' event.id %}"><i class="fa fa-sign-in text-info"></i> View</a></li>
                             <li><a class="dropdown-item border-radius-md" href="{% url 'req-event-app' event.id %}"><i class="fa fa-check text-success"></i> Approve</a></li>
                             <li><a class="dropdown-item border-radius-md" href="{% url 'req-event-reject' event.id %}"><i class="fa fa-close text-danger"></i> Reject</a></li>
                           </ul>
