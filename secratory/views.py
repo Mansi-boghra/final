@@ -1,7 +1,4 @@
 from datetime import datetime
-import re
-from urllib.request import Request
-from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
 from random import randrange, choices

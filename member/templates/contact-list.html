@@ -61,9 +61,23 @@ table#customers{
   </div><!-- /.hero -->
 <br>
 <div class="container">
-    <h2>Contact-list</h2>
+  <h2>Contact-list</h2>
 
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="row" style="display: flex;">
+     
+      <div class="col-10" style="text-align: right;">
+          <input class="form-control" style="margin: 20px; border: 2px rgb(51, 160, 41) solid; " type="text" name="search" id="">
+      </div>
+        <button class="btn btn-green" type="submit" style="margin-left: 30px; "><i class="fa fa-search"></i> </button>
+      
+    </form>
 
+    </div>
+{% if search %}
+<h3 style="color: rgb(86, 194, 64);">Here are The search results of <span style="color: red;">" {{search}} "</span> </h3>
+{% endif %}
 <table id="customers">
  
   <tr>
