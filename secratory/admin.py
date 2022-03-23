@@ -21,4 +21,8 @@ class EmergencyModel(admin.ModelAdmin):
     list_display = ['name','occup','contact','email']
 
 admin.site.register(Gallery)
+class GalleryModel(admin.ModelAdmin):
+    list_display = ['uid','type','pic']
+
+
 

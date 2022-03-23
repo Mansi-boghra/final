@@ -20,7 +20,8 @@ def index(request):
         new_member = Member.objects.all()[::-1][:6]
         complains = mm.Complain.objects.filter(status=False)
         req_events = mm.ReqEvent.objects.filter(status=False)
-        return render(request,'index.html',{'uid':uid,'notice_num':notice_num,'req_events':req_events, 'event_num':event_num,'complain_num':complain_num,'member_num':member_num,'new_member':new_member,'complains':complains})
+        notices = mm.Notice.objects.all()[::-1][:5]
+        return render(request,'index.html',{'uid':uid,'notice_num':notice_num,'req_events':req_events, 'event_num':event_num,'complain_num':complain_num,'member_num':member_num,'new_member':new_member,'complains':complains,'notices':notices})
     except:
         
         return render(request,'sign-in.html')
@@ -77,8 +78,10 @@ def profile(request):
         uid.name = request.POST['name']
         uid.mobile = request.POST['mobile']
         uid.address = request.POST['address']
-        msg = 'profile updated'
+        if 'pic' in request.FILES:
+            uid.pic = request.FILES['pic']
         uid.save()
+        msg = 'profile updated'
         return render(request,'profile.html',{'msg':msg,'uid':uid})
     return render(request,'profile.html',{'uid':uid})
 
@@ -293,8 +296,8 @@ def send_notice(request):
         send_mail( subject, message, email_from, recipient_list )
 
         return render(request,'send-notice.html',{'uid':uid,'members':members,'notice':notice,'msg':'Notice is sent'}) 
-    notice = mm.Notice.objects.all()
-    return render(request,'send-notice.html',{'uid':uid,'members':members,'notices':notice})
+    notices = mm.Notice.objects.all()
+    return render(request,'send-notice.html',{'uid':uid,'members':members,'notices':notices})
 
 def delete_notice(request,pk):
     notice = mm.Notice.objects.get(id=pk)

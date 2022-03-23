@@ -67,7 +67,7 @@
         <div class="row">
           <div class="row">
             <div class="card-body">
-              <form role="form" action="{% url 'profile' %}" method="POST">
+              <form role="form" action="{% url 'profile' %}" method="POST" enctype="multipart/form-data" >
                 {% csrf_token %}
                 <div class="row">
                   <div class="col-4">
@@ -85,11 +85,8 @@
                   </div>
                   <div class="col-4">
                     <label for="" class="form-control">Profile Pic</label>
-                    {% if uid.pic %}
-                    <input type="file" name="pic" class="form-control" value="{{uid.pic.url}}" style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
-                    {% else %}
                     <input type="file" name="pic" class="form-control" style="background-color: rgb(250, 243, 242); padding-left: 10px; border: black solid 1px;" id="">
-                    {% endif %}
+                    
                   </div>
                   </div>
                   <div class="row">

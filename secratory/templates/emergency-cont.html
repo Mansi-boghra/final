@@ -30,8 +30,14 @@
           </div>
         </div>
       </div>
-      emergency contact
-      <div class="row">
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          <h5 class="mb-1" style="margin-left: 50px; margin-top: 50px;">
+            emergency contact
+          </h5>          
+        </div>
+      </div>  
+     <div class="row">
         <p style="text-align: center; color: red;">{{msg}}</p>
         <div class="row">
           <div class="card-body">
@@ -112,7 +118,7 @@
                     <span class="badge badge-sm bg-gradient-success">{{contact.contact}}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{{contact.uid.email}}</span>
+                    <span class="text-secondary text-xs font-weight-bold">{{contact.email}}</span>
                   </td>
                   <td class="align-middle" style="text-align: center;">
                     <a href="{% url 'delete-emergency-contact' contact.id %}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
