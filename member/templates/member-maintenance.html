@@ -14,10 +14,10 @@
     <div id="hero" class="hero overlay subpage-hero contact-hero">
       <div class="hero-content">
           <div class="hero-text">
-              <h1>Maintenance</h1>
+              <h1>Pay Maintenance</h1>
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url 'member-index' %}">Home</a></li>
-                <li class="breadcrumb-item active">Maintenance</li>
+                <li class="breadcrumb-item active">Pay Maintenance</li>
               </ol>
           </div><!-- /.hero-text -->
       </div><!-- /.hero-content -->
@@ -41,7 +41,7 @@
             
             <div class="row">
               <div class="card-body">
-                <h4>Maintenance <i class="fa fa-money"></i></h4>
+                <h4>Pay Maintenance <i class="fa fa-money"></i></h4>
                 <form role="form" action="{% url 'member-maintenance' %}" method="POST">
                   {% csrf_token %}
                   <div class="row">

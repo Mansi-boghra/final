@@ -56,7 +56,7 @@
                 <div class="col-sm-12 mt-20">
                     <div class="form-group old">
                       <label for="">Event date:</label>
-                      <input name="date" type="date" placeholder="Enter your subject..." class="form-control" id="" required>
+                      <input name="date" id="date-input" min="" type="date" placeholder="Enter your subject..." class="form-control" id="" required>
                     </div>
                 </div>
                 <div class="col-sm-12 mt-20">
@@ -83,5 +83,25 @@
   </div>
 </div>
 </section>
+
+<script>
+  let date = new Date();
+  let curdate = date.getDate()
+  let curMonth = String(date.getMonth() + 1) 
+  let curYear = date.getFullYear()
+  let currentDate
+  if(curMonth.length == 1){
+    currentDate = `${curYear}-0${curMonth}-${curdate}`
+    console.log('sdfsd')
+  }else{
+    currentDate = `${curYear}-0${curMonth}-${curdate}`
+
+  }
+  // console.log(currentDate)
+
+  let dateInput = document.getElementById("date-input")
+  dateInput.min = currentDate
+  console.log(dateInput.min)
+</script>
 
 {% endblock %}

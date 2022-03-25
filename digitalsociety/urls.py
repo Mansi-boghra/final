@@ -24,3 +24,7 @@ urlpatterns = [
     path('sec/',include('secratory.urls')),
     path('',include('member.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = "Digital Society"
+admin.site.site_title = "Digital Society"
+admin.site.index_title = "Digital Society"
